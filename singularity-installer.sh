@@ -8,6 +8,7 @@ sudo apt update
 sudo apt install docker-ce
 
 #docker sudo 
+sudo usermod -aG docker $USER
 
 #install nessesary
 # Ensure repositories are up-to-date
@@ -31,23 +32,23 @@ sudo apt-get install -y \
    zlib1g-dev
 
 #install go
-# rm -r /usr/local/go # remove prev go
+sudo rm -r /usr/local/go # remove prev go
 #最新のGOのtarファイルを持ってきて/usr/local/で解凍
-export VERSION=1.21.0 OS=linux ARCH=amd64 && \
-  wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz && \
-  sudo tar -C /usr/local -xzvf go$VERSION.$OS-$ARCH.tar.gz && \
-  rm go$VERSION.$OS-$ARCH.tar.gz
+export VERSION=1.21.0 OS=linux ARCH=amd64
+wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz
+sudo tar -C /usr/local -xzvf go$VERSION.$OS-$ARCH.tar.gz
+rm go$VERSION.$OS-$ARCH.tar.gz
 
-echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc && \
-  source ~/.bashrc
+echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
+cd /usr/local/go/bin && cd 
+source ~/.bashrc
+
 
 # download singularity
-export VERSION=4.1.0 && \
-    wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singularity-ce-${VERSION}.tar.gz && \
-    tar -xzf singularity-ce-${VERSION}.tar.gz && \
-    cd singularity-ce-${VERSION}
-
-
+export VERSION=4.1.0
+wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singularity-ce-${VERSION}.tar.gz
+tar -xzf singularity-ce-${VERSION}.tar.gz
+cd singularity-ce-${VERSION}
 
 #install singularity
 export VERSION=3.8.0 
