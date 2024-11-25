@@ -56,6 +56,7 @@ wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singula
 tar -xzf singularity-ce-${VERSION}.tar.gz 
 cd singularity-ce-${VERSION}
 
+source ~/.bashrc
 ./mconfig
 make -C ./builddir
 sudo make -C ./builddir install
