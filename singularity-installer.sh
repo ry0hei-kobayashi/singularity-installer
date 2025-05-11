@@ -17,6 +17,7 @@ sudo apt-get update
 sudo apt-get install -y \
    autoconf \
    automake \
+   make \
    cryptsetup \
    git \
    libfuse-dev \
@@ -62,3 +63,6 @@ make -C ./builddir
 sudo make -C ./builddir install
 
 singularity help
+
+#if your docker service is masked
+sudo apt install docker.io
