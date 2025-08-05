@@ -52,7 +52,7 @@ tar -xzf singularity-ce-${VERSION}.tar.gz
 cd singularity-ce-${VERSION}
 
 #install singularity
-export VERSION=3.8.0 
+export VERSION=4.1.0
 wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singularity-ce-${VERSION}.tar.gz
 tar -xzf singularity-ce-${VERSION}.tar.gz 
 cd singularity-ce-${VERSION}
@@ -64,5 +64,12 @@ sudo make -C ./builddir install
 
 singularity help
 
+# Set up user namespaces for unprivileged users, ubuntu24.04
+sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+
 #if your docker service is masked
 sudo apt install docker.io
+
+#if you use nvidia-container-toolkit
+#edit /usr/local/etc/singularity 
+
