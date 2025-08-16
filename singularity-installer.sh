@@ -66,10 +66,14 @@ singularity help
 
 # Set up user namespaces for unprivileged users, ubuntu24.04
 sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+# continue to use after reboot
+echo 'kernel.apparmor_restrict_unprivileged_userns=0' | sudo tee /etc/sysctl.d/99-singularity.conf
+sudo sysctl --system
 
 #if your docker service is masked
 sudo apt install docker.io
 
 #if you use nvidia-container-toolkit
 #edit /usr/local/etc/singularity 
+
 
