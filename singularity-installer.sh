@@ -30,6 +30,7 @@ sudo apt-get install -y \
    squashfs-tools-ng \
    uidmap \
    wget \
+   make \
    zlib1g-dev
 
 #install go
@@ -43,6 +44,7 @@ rm go$VERSION.$OS-$ARCH.tar.gz
 echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc
 cd /usr/local/go/bin && cd 
 source ~/.bashrc
+sleep 1
 
 
 # download singularity
@@ -58,6 +60,8 @@ tar -xzf singularity-ce-${VERSION}.tar.gz
 cd singularity-ce-${VERSION}
 
 source ~/.bashrc
+sleep 1
+
 ./mconfig
 make -C ./builddir
 sudo make -C ./builddir install
