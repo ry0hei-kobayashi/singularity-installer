@@ -80,4 +80,8 @@ sudo apt install docker.io
 #if you use nvidia-container-toolkit
 #edit /usr/local/etc/singularity 
 
+#in ubuntu24, net.ipv4.ping_group_range = 0 2147483647
+echo "net.ipv4.ping_group_range = 0 2147483647" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+
 
