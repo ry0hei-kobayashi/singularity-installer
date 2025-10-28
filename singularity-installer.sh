@@ -82,6 +82,9 @@ sudo apt install docker.io
 
 #in ubuntu24, net.ipv4.ping_group_range = 0 2147483647
 echo "net.ipv4.ping_group_range = 0 2147483647" | sudo tee -a /etc/sysctl.conf
+#in ubuntu24, humble inside docker need higher buffer size
+echo "net.core.rmem_max = 20971520" | sudo tee -a /etc/sysctl.conf
+echo "net.core.wmem_max = 20971520" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 
 
