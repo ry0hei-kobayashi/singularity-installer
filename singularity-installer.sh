@@ -68,17 +68,17 @@ sudo make -C ./builddir install
 
 singularity help
 
-# Set up user namespaces for unprivileged users, ubuntu24.04
-sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
-# continue to use after reboot
-echo 'kernel.apparmor_restrict_unprivileged_userns=0' | sudo tee /etc/sysctl.d/99-singularity.conf
-sudo sysctl --system
-
 #if your docker service is masked
 sudo apt install docker.io
 
 #if you use nvidia-container-toolkit
 #edit /usr/local/etc/singularity 
+
+# Set up user namespaces for unprivileged users, ubuntu24.04
+# continue to use after reboot
+sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+echo 'kernel.apparmor_restrict_unprivileged_userns=0' | sudo tee /etc/sysctl.d/99-singularity.conf
+sudo sysctl --system
 
 #in ubuntu24, net.ipv4.ping_group_range = 0 2147483647
 echo "net.ipv4.ping_group_range = 0 2147483647" | sudo tee -a /etc/sysctl.conf
